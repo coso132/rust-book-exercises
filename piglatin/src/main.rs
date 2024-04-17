@@ -8,11 +8,15 @@ fn main() {
             _ => (),
         };
 
-        dbg!("{}", pig_latin(s.trim().to_string()));
+        match pig_latin(s.trim()) {
+            None => continue,
+            Some(y) => println!("{}", y),
+        }
+        //dbg!("{}", pig_latin(s.trim().to_string()));
     }
 }
 
-fn pig_latin(s: String) -> Option<String> {
+fn pig_latin(s: &str) -> Option<String> {
     let mut c = s.chars();
     match c.clone().enumerate().next() {
         None => return None,
